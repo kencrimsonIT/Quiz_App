@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Quizz App</string>
+    <string name="login_title">Chào mừng\nbạn quay trở lại!</string>
+    <string name="email_hint">Email của bạn</string>
+    <string name="password_hint">Mật khẩu của bạn</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="login_button">Đăng nhập</string>
+    <string name="or_login_with">Hoặc đăng nhập với</string>
+    <string name="no_account">Chưa có tài khoản? </string>
+    <string name="register_now">Đăng ký ngay</string>
+    <string name="register_title">Xin chào! Hãy đăng ký\nđể trải nghiệm ngay.</string>
+    <string name="display_name_hint">Tên hiển thị của bạn</string>
+    <string name="confirm_password_hint">Xác nhận mật khẩu</string>
+    <string name="register_button">Đăng ký</string>
+    <string name="already_have_account">Đã có tài khoản? </string>
+    <string name="login_now">Đăng nhập ngay</string>
+    <string name="forgot_password_title">Quên mật khẩu?</string>
+    <string name="forgot_password_subtitle">Đừng lo! Hãy nhập email của bạn để\nkhôi phục mật khẩu.</string>
+    <string name="recovery_email_hint">Email khôi phục của bạn</string>
+    <string name="send_otp_button">Gửi mã OTP</string>
+    <string name="remember_password">Đã nhớ mật khẩu? </string>
 </resources>
