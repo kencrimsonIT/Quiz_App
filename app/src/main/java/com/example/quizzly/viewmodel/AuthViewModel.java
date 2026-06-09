@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class AuthViewModel extends ViewModel {
     private final AuthRepository authRepository;
-    
+
     private final MutableLiveData<FirebaseUser> userLiveData = new MutableLiveData<>();
     private final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
     private final MutableLiveData<Boolean> loadingLiveData = new MutableLiveData<>();
@@ -43,19 +43,30 @@ public class AuthViewModel extends ViewModel {
             if (task.isSuccessful()) {
                 userLiveData.setValue(authRepository.getCurrentUser());
             } else {
-                errorLiveData.setValue(task.getException() != null ? task.getException().getMessage() : "Login failed");
+                errorLiveData.setValue(task.getException() != null
+                        ? task.getException().getMessage()
+                        : "Đăng nhập thất bại");
             }
         });
     }
 
-    public void register(String email, String password) {
+    /**
+     * Đăng ký tài khoản mới với displayName
+     * AuthRepository sẽ tự động:
+     * 1. Tạo tài khoản Firebase Auth
+     * 2. Cập nhật displayName vào Auth profile
+     * 3. Tạo document trong Firestore collection "users"
+     */
+    public void register(String email, String password, String displayName) {
         loadingLiveData.setValue(true);
-        authRepository.register(email, password).addOnCompleteListener(task -> {
+        authRepository.register(email, password, displayName).addOnCompleteListener(task -> {
             loadingLiveData.setValue(false);
             if (task.isSuccessful()) {
                 userLiveData.setValue(authRepository.getCurrentUser());
             } else {
-                errorLiveData.setValue(task.getException() != null ? task.getException().getMessage() : "Registration failed");
+                errorLiveData.setValue(task.getException() != null
+                        ? task.getException().getMessage()
+                        : "Đăng ký thất bại");
             }
         });
     }
@@ -67,7 +78,9 @@ public class AuthViewModel extends ViewModel {
             if (task.isSuccessful()) {
                 passwordResetSentLiveData.setValue(true);
             } else {
-                errorLiveData.setValue(task.getException() != null ? task.getException().getMessage() : "Failed to send reset email");
+                errorLiveData.setValue(task.getException() != null
+                        ? task.getException().getMessage()
+                        : "Gửi email thất bại");
             }
         });
     }

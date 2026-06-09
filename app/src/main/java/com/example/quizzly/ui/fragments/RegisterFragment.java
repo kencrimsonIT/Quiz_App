@@ -40,20 +40,21 @@ public class RegisterFragment extends Fragment {
             String confirmPassword = binding.etConfirmPassword.getText().toString().trim();
 
             if (displayName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(getContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             if (!password.equals(confirmPassword)) {
-                Toast.makeText(getContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            authViewModel.register(email, password);
+            // Truyền thêm displayName vào register
+            authViewModel.register(email, password, displayName);
         });
 
-        binding.tvLoginLink.setOnClickListener(v -> 
-            Navigation.findNavController(view).popBackStack()
+        binding.tvLoginLink.setOnClickListener(v ->
+                Navigation.findNavController(view).popBackStack()
         );
 
         authViewModel.getUserLiveData().observe(getViewLifecycleOwner(), firebaseUser -> {
