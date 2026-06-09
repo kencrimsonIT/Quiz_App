@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.quizzy"
+    namespace = "com.example.quizzly"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.quizzy"
+        applicationId = "com.example.quizzly"
         minSdk = 30
         targetSdk = 36
         versionCode = 1
@@ -30,9 +30,12 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-}
+    viewBinding {
+        enable = true
+    }
+    }
 
-dependencies {
+    dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -40,7 +43,12 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:34.14.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-firestore")
+    implementation(libs.firebase.auth)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-}
+    }
