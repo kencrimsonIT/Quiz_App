@@ -64,6 +64,20 @@ public class AuthViewModel extends ViewModel {
         });
     }
 
+    public void loginWithFacebook(com.facebook.AccessToken token) {
+        loadingLiveData.setValue(true);
+        authRepository.firebaseAuthWithFacebook(token).addOnCompleteListener(task -> {
+            loadingLiveData.setValue(false);
+            if (task.isSuccessful()) {
+                userLiveData.setValue(authRepository.getCurrentUser());
+            } else {
+                errorLiveData.setValue(task.getException() != null
+                        ? task.getException().getMessage()
+                        : "Đăng nhập Facebook thất bại");
+            }
+        });
+    }
+
     /**
      * Đăng ký tài khoản mới với displayName
      * AuthRepository sẽ tự động:
