@@ -125,6 +125,7 @@
             android:src="@drawable/ic_google" />
 
         <ImageView
+            android:id="@+id/btnFacebook"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:src="@drawable/ic_facebook" />

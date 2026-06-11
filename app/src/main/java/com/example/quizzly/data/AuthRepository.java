@@ -26,6 +26,15 @@ public class AuthRepository {
 
     public Task<AuthResult> firebaseAuthWithGoogle(String idToken) {
         com.google.firebase.auth.AuthCredential credential = com.google.firebase.auth.GoogleAuthProvider.getCredential(idToken, null);
+        return signInWithCredential(credential, "Google");
+    }
+
+    public Task<AuthResult> firebaseAuthWithFacebook(com.facebook.AccessToken token) {
+        com.google.firebase.auth.AuthCredential credential = com.google.firebase.auth.FacebookAuthProvider.getCredential(token.getToken());
+        return signInWithCredential(credential, "Facebook");
+    }
+
+    private Task<AuthResult> signInWithCredential(com.google.firebase.auth.AuthCredential credential, String provider) {
         return firebaseAuth.signInWithCredential(credential)
                 .continueWithTask(task -> {
                     if (!task.isSuccessful()) {
@@ -34,7 +43,7 @@ public class AuthRepository {
 
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     if (user == null) {
-                        throw new Exception("User is null after Google Sign-In");
+                        throw new Exception("User is null after " + provider + " Sign-In");
                     }
 
                     // Kiểm tra xem user đã tồn tại trong Firestore chưa, nếu chưa thì tạo mới

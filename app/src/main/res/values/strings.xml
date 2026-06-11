@@ -19,4 +19,9 @@
     <string name="recovery_email_hint">Email khôi phục của bạn</string>
     <string name="send_otp_button">Gửi mã OTP</string>
     <string name="remember_password">Đã nhớ mật khẩu? </string>
+
+    <!-- Facebook Login -->
+    <string name="facebook_app_id">1691375582370697</string>
+    <string name="fb_login_protocol_scheme">fb1691375582370697</string>
+    <string name="facebook_client_token">33419bc76667af451728d73066898a5d</string>
 </resources>
