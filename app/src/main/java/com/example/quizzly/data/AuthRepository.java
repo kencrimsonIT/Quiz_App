@@ -24,6 +24,39 @@ public class AuthRepository {
         return firebaseAuth.signInWithEmailAndPassword(email, password);
     }
 
+    public Task<AuthResult> firebaseAuthWithGoogle(String idToken) {
+        com.google.firebase.auth.AuthCredential credential = com.google.firebase.auth.GoogleAuthProvider.getCredential(idToken, null);
+        return firebaseAuth.signInWithCredential(credential)
+                .continueWithTask(task -> {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    if (user == null) {
+                        throw new Exception("User is null after Google Sign-In");
+                    }
+
+                    // Kiểm tra xem user đã tồn tại trong Firestore chưa, nếu chưa thì tạo mới
+                    return db.collection("users").document(user.getUid()).get()
+                            .continueWithTask(getTask -> {
+                                if (getTask.isSuccessful() && !getTask.getResult().exists()) {
+                                    Map<String, Object> userData = new HashMap<>();
+                                    userData.put("uid", user.getUid());
+                                    userData.put("displayName", user.getDisplayName());
+                                    userData.put("email", user.getEmail());
+                                    userData.put("createdAt", com.google.firebase.Timestamp.now());
+
+                                    return db.collection("users")
+                                            .document(user.getUid())
+                                            .set(userData)
+                                            .continueWith(setTask -> task.getResult());
+                                }
+                                return Tasks.forResult(task.getResult());
+                            });
+                });
+    }
+
     /**
      * Đăng ký tài khoản mới, sau đó:
      * 1. Cập nhật displayName vào Firebase Auth profile

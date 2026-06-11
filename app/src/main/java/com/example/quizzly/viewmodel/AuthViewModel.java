@@ -50,6 +50,20 @@ public class AuthViewModel extends ViewModel {
         });
     }
 
+    public void loginWithGoogle(String idToken) {
+        loadingLiveData.setValue(true);
+        authRepository.firebaseAuthWithGoogle(idToken).addOnCompleteListener(task -> {
+            loadingLiveData.setValue(false);
+            if (task.isSuccessful()) {
+                userLiveData.setValue(authRepository.getCurrentUser());
+            } else {
+                errorLiveData.setValue(task.getException() != null
+                        ? task.getException().getMessage()
+                        : "Đăng nhập Google thất bại");
+            }
+        });
+    }
+
     /**
      * Đăng ký tài khoản mới với displayName
      * AuthRepository sẽ tự động:
