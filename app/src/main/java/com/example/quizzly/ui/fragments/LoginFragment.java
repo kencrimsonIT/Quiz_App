@@ -15,6 +15,11 @@ import androidx.navigation.Navigation;
 import com.example.quizzly.R;
 import com.example.quizzly.databinding.FragmentLoginBinding;
 import com.example.quizzly.viewmodel.AuthViewModel;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,12 +32,15 @@ import android.content.Intent;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 
+import java.util.Collections;
+
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
     private AuthViewModel authViewModel;
     private GoogleSignInClient googleSignInClient;
     private ActivityResultLauncher<Intent> googleSignInLauncher;
+    private CallbackManager callbackManager;
 
     @Nullable
     @Override
@@ -72,6 +80,25 @@ public class LoginFragment extends Fragment {
                 }
         );
 
+        // Cấu hình Facebook Login
+        callbackManager = CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                authViewModel.loginWithFacebook(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(getContext(), "Facebook login cancelled", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(@NonNull FacebookException error) {
+                Toast.makeText(getContext(), "Facebook login error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         binding.btnLogin.setOnClickListener(v -> {
             String email = binding.etEmail.getText().toString().trim();
             String password = binding.etPassword.getText().toString().trim();
@@ -87,6 +114,10 @@ public class LoginFragment extends Fragment {
         binding.btnGoogle.setOnClickListener(v -> {
             Intent signInIntent = googleSignInClient.getSignInIntent();
             googleSignInLauncher.launch(signInIntent);
+        });
+
+        binding.btnFacebook.setOnClickListener(v -> {
+            LoginManager.getInstance().logInWithReadPermissions(this, Collections.singletonList("email"));
         });
 
         binding.tvRegisterLink.setOnClickListener(v -> 
@@ -113,6 +144,12 @@ public class LoginFragment extends Fragment {
             binding.progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
             binding.btnLogin.setEnabled(!isLoading);
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
