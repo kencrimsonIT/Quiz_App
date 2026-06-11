@@ -15,11 +15,24 @@ import androidx.navigation.Navigation;
 import com.example.quizzly.R;
 import com.example.quizzly.databinding.FragmentLoginBinding;
 import com.example.quizzly.viewmodel.AuthViewModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+
+import android.content.Intent;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 
 public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
     private AuthViewModel authViewModel;
+    private GoogleSignInClient googleSignInClient;
+    private ActivityResultLauncher<Intent> googleSignInLauncher;
 
     @Nullable
     @Override
@@ -33,6 +46,32 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
+        // Cấu hình Google Sign-In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
+
+        // Đăng ký Activity Result cho Google Sign-In
+        googleSignInLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == android.app.Activity.RESULT_OK) {
+                        Intent data = result.getData();
+                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                        try {
+                            GoogleSignInAccount account = task.getResult(ApiException.class);
+                            if (account != null) {
+                                authViewModel.loginWithGoogle(account.getIdToken());
+                            }
+                        } catch (ApiException e) {
+                            Toast.makeText(getContext(), "Google sign in failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+
         binding.btnLogin.setOnClickListener(v -> {
             String email = binding.etEmail.getText().toString().trim();
             String password = binding.etPassword.getText().toString().trim();
@@ -43,6 +82,11 @@ public class LoginFragment extends Fragment {
             }
 
             authViewModel.login(email, password);
+        });
+
+        binding.btnGoogle.setOnClickListener(v -> {
+            Intent signInIntent = googleSignInClient.getSignInIntent();
+            googleSignInLauncher.launch(signInIntent);
         });
 
         binding.tvRegisterLink.setOnClickListener(v -> 
