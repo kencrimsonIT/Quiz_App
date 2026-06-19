@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
+import com.example.quizzly.R;
 import com.example.quizzly.databinding.FragmentForgotPasswordBinding;
 import com.example.quizzly.viewmodel.AuthViewModel;
 
@@ -40,7 +41,7 @@ public class ForgotPasswordFragment extends Fragment {
                 return;
             }
 
-            authViewModel.sendPasswordResetEmail(email);
+            authViewModel.sendPasswordResetOtp(email);
         });
 
         binding.tvLoginLink.setOnClickListener(v -> 
@@ -49,8 +50,11 @@ public class ForgotPasswordFragment extends Fragment {
 
         authViewModel.getPasswordResetSentLiveData().observe(getViewLifecycleOwner(), sent -> {
             if (sent) {
-                Toast.makeText(getContext(), "Password reset email sent", Toast.LENGTH_LONG).show();
-                Navigation.findNavController(view).popBackStack();
+                Toast.makeText(getContext(), "Mã OTP đã được gửi đến email của bạn", Toast.LENGTH_LONG).show();
+                String email = binding.etEmail.getText().toString().trim();
+                Bundle args = new Bundle();
+                args.putString("email", email);
+                Navigation.findNavController(view).navigate(R.id.action_forgotPasswordFragment_to_otpVerifyFragment, args);
             }
         });
 
