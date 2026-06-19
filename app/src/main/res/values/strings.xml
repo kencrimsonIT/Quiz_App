@@ -20,6 +20,20 @@
     <string name="send_otp_button">Gửi mã OTP</string>
     <string name="remember_password">Đã nhớ mật khẩu? </string>
 
+    <!-- OTP Verify -->
+    <string name="otp_title">Xác nhận OTP</string>
+    <string name="otp_subtitle">Hãy nhập mã OTP chúng tôi vừa gửi qua emaill của bạn.</string>
+    <string name="otp_button">Xác nhận</string>
+    <string name="otp_not_received">Chưa nhận mã OTP? </string>
+    <string name="otp_resend">Gửi lại</string>
+
+    <!-- Reset Password -->
+    <string name="reset_password_title">Đặt mật khẩu mới</string>
+    <string name="reset_password_subtitle">Mật khẩu mới của bạn phải khác hoàn toàn với mật khẩu đã dùng.</string>
+    <string name="new_password_hint">Mật khẩu mới</string>
+    <string name="confirm_new_password_hint">Xác nhận mật khẩu mới</string>
+    <string name="create_password_button">Tạo mật khẩu</string>
+
     <!-- Facebook Login -->
     <string name="facebook_app_id">1691375582370697</string>
     <string name="fb_login_protocol_scheme">fb1691375582370697</string>
