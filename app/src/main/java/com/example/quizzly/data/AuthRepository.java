@@ -2,6 +2,7 @@ package com.example.quizzly.data;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -10,6 +11,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import com.google.firebase.firestore.FieldValue;
+import com.example.quizzly.utils.EmailJSService;
 
 public class AuthRepository {
     private final FirebaseAuth firebaseAuth;
@@ -46,7 +50,6 @@ public class AuthRepository {
                         throw new Exception("User is null after " + provider + " Sign-In");
                     }
 
-                    // Kiểm tra xem user đã tồn tại trong Firestore chưa, nếu chưa thì tạo mới
                     return db.collection("users").document(user.getUid()).get()
                             .continueWithTask(getTask -> {
                                 if (getTask.isSuccessful() && !getTask.getResult().exists()) {
@@ -66,11 +69,6 @@ public class AuthRepository {
                 });
     }
 
-    /**
-     * Đăng ký tài khoản mới, sau đó:
-     * 1. Cập nhật displayName vào Firebase Auth profile
-     * 2. Tạo document trong Firestore collection "users"
-     */
     public Task<Void> register(String email, String password, String displayName) {
         return firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .continueWithTask(task -> {
@@ -80,7 +78,6 @@ public class AuthRepository {
 
                     FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                    // Bước 1: Cập nhật displayName vào Auth profile
                     UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
                             .setDisplayName(displayName)
                             .build();
@@ -94,7 +91,6 @@ public class AuthRepository {
 
                     FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                    // Bước 2: Tạo document trong Firestore collection "users"
                     Map<String, Object> userData = new HashMap<>();
                     userData.put("uid", user.getUid());
                     userData.put("displayName", displayName);
@@ -107,8 +103,40 @@ public class AuthRepository {
                 });
     }
 
-    public Task<Void> sendPasswordResetEmail(String email) {
-        return firebaseAuth.sendPasswordResetEmail(email);
+    public Task<Void> sendPasswordResetOtp(String email) {
+        String otp = generateOtp();
+        long expirationMillis = System.currentTimeMillis() + (5 * 60 * 1000); // 5 minutes
+        Timestamp expiredAt = new Timestamp(expirationMillis / 1000, 0);
+
+        Map<String, Object> otpData = new HashMap<>();
+        otpData.put("otp", otp);
+        otpData.put("expiredAt", expiredAt);
+        otpData.put("createdAt", FieldValue.serverTimestamp());
+        
+        return db.collection("otps").document(email).set(otpData).continueWithTask(task -> {
+            if (task.isSuccessful()) {
+                EmailJSService.sendEmail(email, otp);
+            }
+            return task;
+        });
+    }
+
+    private String generateOtp() {
+        Random random = new Random();
+        int otp = 100000 + random.nextInt(900000);
+        return String.valueOf(otp);
+    }
+
+    public Task<Boolean> verifyOtp(String email, String otp) {
+        return db.collection("otps").document(email).get().continueWith(task -> {
+            if (task.isSuccessful() && task.getResult() != null && task.getResult().exists()) {
+                String savedOtp = task.getResult().getString("otp");
+                if (otp.equals(savedOtp)) {
+                    return true;
+                }
+            }
+            return false;
+        });
     }
 
     public Task<Void> changePassword(String newPassword) {
