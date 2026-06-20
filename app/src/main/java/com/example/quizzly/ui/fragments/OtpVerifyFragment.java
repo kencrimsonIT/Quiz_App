@@ -65,7 +65,10 @@ public class OtpVerifyFragment extends Fragment {
         authViewModel.getOtpVerifiedLiveData().observe(getViewLifecycleOwner(), verified -> {
             if (verified) {
                 Toast.makeText(getContext(), "Xác thực OTP thành công!", Toast.LENGTH_SHORT).show();
-                Navigation.findNavController(view).navigate(R.id.action_otpVerifyFragment_to_resetPasswordFragment);
+                Bundle args = new Bundle();
+                args.putString("email", email);
+                args.putString("otp", getOtpCode());
+                Navigation.findNavController(view).navigate(R.id.action_otpVerifyFragment_to_resetPasswordFragment, args);
             }
         });
 

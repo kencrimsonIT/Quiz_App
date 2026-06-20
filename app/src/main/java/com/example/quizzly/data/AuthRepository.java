@@ -139,12 +139,47 @@ public class AuthRepository {
         });
     }
 
-    public Task<Void> changePassword(String newPassword) {
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null) {
-            return user.updatePassword(newPassword);
-        }
-        return Tasks.forException(new Exception("No user is currently logged in"));
+    public Task<Void> changePassword(String email, String otp, String newPassword) {
+        return Tasks.call(java.util.concurrent.Executors.newSingleThreadExecutor(), () -> {
+            java.net.URL url = new java.net.URL("https://quizapp-api-mdtx.onrender.com/reset-password");
+            java.net.HttpURLConnection conn = (java.net.HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setDoOutput(true);
+
+            // Simple JSON construction
+            String jsonInputString = "{\"email\": \"" + email + "\", \"otp\": \"" + otp + "\", \"newPassword\": \"" + newPassword + "\"}";
+
+            try (java.io.OutputStream os = conn.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+
+            int code = conn.getResponseCode();
+            if (code == 200) {
+                return null;
+            } else {
+                java.io.InputStream is = conn.getErrorStream();
+                if (is == null) is = conn.getInputStream();
+                java.io.BufferedReader br = new java.io.BufferedReader(new java.io.InputStreamReader(is, "utf-8"));
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                
+                String errorMsg = "Lỗi đổi mật khẩu (" + code + ")";
+                try {
+                    // Cố gắng lấy thông báo lỗi từ JSON trả về
+                    if (response.toString().contains("\"error\"")) {
+                        errorMsg = response.toString().split("\"error\":\"")[1].split("\"")[0];
+                    }
+                } catch (Exception e) {}
+                
+                throw new Exception(errorMsg);
+            }
+        });
     }
 
     public void logout() {
