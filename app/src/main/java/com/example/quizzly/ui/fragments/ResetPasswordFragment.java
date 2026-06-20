@@ -52,7 +52,14 @@ public class ResetPasswordFragment extends Fragment {
                 return;
             }
 
-            authViewModel.resetPassword(newPassword);
+            String email = "";
+            String otp = "";
+            if (getArguments() != null) {
+                email = getArguments().getString("email", "");
+                otp = getArguments().getString("otp", "");
+            }
+
+            authViewModel.resetPassword(email, otp, newPassword);
         });
 
         // Observability

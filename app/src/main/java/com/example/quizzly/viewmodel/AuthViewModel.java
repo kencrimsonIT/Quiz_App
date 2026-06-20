@@ -152,11 +152,17 @@ public class AuthViewModel extends ViewModel {
         });
     }
 
-    public void resetPassword(String newPassword) {
+    public void resetPassword(String email, String otp, String newPassword) {
         loadingLiveData.setValue(true);
-        new android.os.Handler().postDelayed(() -> {
+        authRepository.changePassword(email, otp, newPassword).addOnCompleteListener(task -> {
             loadingLiveData.setValue(false);
-            passwordResetCompletedLiveData.setValue(true);
-        }, 1500);
+            if (task.isSuccessful()) {
+                passwordResetCompletedLiveData.setValue(true);
+            } else {
+                errorLiveData.setValue(task.getException() != null
+                        ? task.getException().getMessage()
+                        : "Đặt lại mật khẩu thất bại");
+            }
+        });
     }
 }
