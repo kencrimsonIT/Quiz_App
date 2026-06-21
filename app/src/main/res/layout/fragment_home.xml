@@ -21,6 +21,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Logout"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/tvWelcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvWelcome" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutBanner"
         android:layout_width="0dp"
