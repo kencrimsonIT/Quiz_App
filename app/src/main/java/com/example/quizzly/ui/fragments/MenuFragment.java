@@ -12,18 +12,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.quizzly.R;
-import com.example.quizzly.databinding.FragmentHomeBinding;
+import com.example.quizzly.databinding.FragmentMenuBinding;
 import com.example.quizzly.viewmodel.AuthViewModel;
 
-public class HomeFragment extends Fragment {
+public class MenuFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentMenuBinding binding;
     private AuthViewModel authViewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentMenuBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -32,17 +32,13 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
-        authViewModel.getUserLiveData().observe(getViewLifecycleOwner(), firebaseUser -> {
-            if (firebaseUser != null) {
-                String username = firebaseUser.getDisplayName();
-                binding.tvUsername.setText(username);
-            } else {
-                Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment);
-            }
+        binding.llLogout.setOnClickListener(v -> {
+            authViewModel.logout();
+            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_loginFragment);
         });
 
-        binding.navMenu.setOnClickListener(v -> {
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_menuFragment);
+        binding.navHome.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_homeFragment);
         });
     }
 
