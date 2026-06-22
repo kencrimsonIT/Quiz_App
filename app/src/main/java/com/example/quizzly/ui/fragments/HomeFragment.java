@@ -34,13 +34,16 @@ public class HomeFragment extends Fragment {
 
         authViewModel.getUserLiveData().observe(getViewLifecycleOwner(), firebaseUser -> {
             if (firebaseUser != null) {
-                binding.tvWelcome.setText("Welcome, " + firebaseUser.getEmail());
+                String username = firebaseUser.getDisplayName();
+                binding.tvUsername.setText(username);
             } else {
                 Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment);
             }
         });
 
-        binding.btnLogout.setOnClickListener(v -> authViewModel.logout());
+        binding.navMenu.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_menuFragment);
+        });
     }
 
     @Override
