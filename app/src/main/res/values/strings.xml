@@ -34,11 +34,6 @@
     <string name="confirm_new_password_hint">Xác nhận mật khẩu mới</string>
     <string name="create_password_button">Tạo mật khẩu</string>
 
-    <!-- Facebook Login -->
-    <string name="facebook_app_id">1691375582370697</string>
-    <string name="fb_login_protocol_scheme">fb1691375582370697</string>
-    <string name="facebook_client_token">33419bc76667af451728d73066898a5d</string>
-
     <!-- Home -->
     <string name="greeting">Xin chào 👋</string>
     <string name="suggested_for_you">Gợi ý cho bạn</string>
