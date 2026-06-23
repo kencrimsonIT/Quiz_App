@@ -1,6 +1,14 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     id("com.google.gms.google-services")
+}
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.inputStream().use { localProperties.load(it) }
 }
 
 android {
@@ -14,6 +22,13 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        manifestPlaceholders["facebookAppId"] = localProperties.getProperty("FACEBOOK_APP_ID", "")
+        manifestPlaceholders["fbLoginProtocolScheme"] = localProperties.getProperty("FB_LOGIN_PROTOCOL_SCHEME", "")
+        manifestPlaceholders["facebookClientToken"] = localProperties.getProperty("FACEBOOK_CLIENT_TOKEN", "")
+
+        buildConfigField("String", "FACEBOOK_APP_ID", "\"${localProperties.getProperty("FACEBOOK_APP_ID", "")}\"")
+        buildConfigField("String", "FACEBOOK_CLIENT_TOKEN", "\"${localProperties.getProperty("FACEBOOK_CLIENT_TOKEN", "")}\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,16 +41,19 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    viewBinding {
-        enable = true
-    }
-    }
 
-    dependencies {
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true  // ← cần thêm để dùng buildConfigField
+    }
+}
+
+dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -53,4 +71,4 @@ android {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    }
+}
