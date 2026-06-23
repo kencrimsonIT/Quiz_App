@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel;
 import com.example.quizzly.data.AuthRepository;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Map;
+
 public class AuthViewModel extends ViewModel {
     private final AuthRepository authRepository;
 
@@ -17,6 +19,17 @@ public class AuthViewModel extends ViewModel {
     private final MutableLiveData<Boolean> otpVerifiedLiveData = new MutableLiveData<>();
     private final MutableLiveData<Boolean> otpResentLiveData = new MutableLiveData<>();
     private final MutableLiveData<Boolean> passwordResetCompletedLiveData = new MutableLiveData<>();
+    private final MutableLiveData<Map<String, Object>> userProfileLiveData = new MutableLiveData<>();
+    // Individual LiveData for easy UI binding
+    private final MutableLiveData<String> displayNameLiveData = new MutableLiveData<>();
+    private final MutableLiveData<String> birthdateLiveData = new MutableLiveData<>();
+    private final MutableLiveData<String> phoneLiveData = new MutableLiveData<>();
+    private final MutableLiveData<String> emailLiveData = new MutableLiveData<>();
+    public LiveData<String> getDisplayNameLiveData() { return displayNameLiveData; }
+    public LiveData<String> getBirthdateLiveData() { return birthdateLiveData; }
+    public LiveData<String> getPhoneLiveData() { return phoneLiveData; }
+    public LiveData<String> getEmailLiveData() { return emailLiveData; }
+    private final MutableLiveData<Boolean> profileUpdatedLiveData = new MutableLiveData<>();
 
     public AuthViewModel() {
         this.authRepository = new AuthRepository();
@@ -49,6 +62,14 @@ public class AuthViewModel extends ViewModel {
 
     public LiveData<Boolean> getPasswordResetCompletedLiveData() {
         return passwordResetCompletedLiveData;
+    }
+
+    public LiveData<Map<String, Object>> getUserProfileLiveData() {
+        return userProfileLiveData;
+    }
+
+    public LiveData<Boolean> getProfileUpdatedLiveData() {
+        return profileUpdatedLiveData;
     }
 
     public void login(String email, String password) {
@@ -165,4 +186,64 @@ public class AuthViewModel extends ViewModel {
             }
         });
     }
+
+    public void loadUserProfile(String uid) {
+        loadingLiveData.setValue(true);
+        authRepository.getUserProfile(uid).addOnCompleteListener(task -> {
+            loadingLiveData.setValue(false);
+            if (task.isSuccessful() && task.getResult() != null) {
+                Map<String, Object> data = task.getResult().getData();
+                userProfileLiveData.setValue(data);
+                if (data != null) {
+                    displayNameLiveData.setValue((String) data.getOrDefault("displayName", ""));
+                    birthdateLiveData.setValue((String) data.getOrDefault("birthdate", ""));
+                    phoneLiveData.setValue((String) data.getOrDefault("phone", ""));
+                    emailLiveData.setValue((String) data.getOrDefault("email", ""));
+                }
+            } else {
+                errorLiveData.setValue("Không thể tải thông tin người dùng");
+            }
+        });
+    }
+
+    // Helper to load profile of current logged‑in user
+    public void loadCurrentUserProfile() {
+        String uid = getCurrentUserUid();
+        if (uid != null) {
+            loadUserProfile(uid);
+        } else {
+            errorLiveData.setValue("User not logged in");
+        }
+    }
+    
+    // Helper to update profile of current logged‑in user
+    public void updateCurrentUserProfile(String displayName, String birthdate, String phone) {
+        String uid = getCurrentUserUid();
+        if (uid != null) {
+            updateUserProfile(uid, displayName, birthdate, phone);
+        } else {
+            errorLiveData.setValue("User not logged in");
+        }
+    }
+
+    public void updateUserProfile(String uid, String displayName, String birthdate, String phone) {
+        loadingLiveData.setValue(true);
+        authRepository.updateUserProfile(uid, displayName, birthdate, phone).addOnCompleteListener(task -> {
+            loadingLiveData.setValue(false);
+            if (task.isSuccessful()) {
+                profileUpdatedLiveData.setValue(true);
+                // Refresh profile data after successful update
+                loadUserProfile(uid);
+            } else {
+                errorLiveData.setValue(task.getException() != null
+                        ? task.getException().getMessage()
+                        : "Cập nhật thông tin thất bại");
+            }
+        });
+    }
+
+    public String getCurrentUserUid() {
+        FirebaseUser user = userLiveData.getValue();
+        return user != null ? user.getUid() : null;
+}
 }
