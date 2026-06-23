@@ -40,6 +40,14 @@ public class MenuFragment extends Fragment {
         binding.navHome.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_homeFragment);
         });
+
+        binding.llLanguage.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_languageSetting);
+        });
+
+        binding.llProfile.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_profileFragment);
+        });
     }
 
     @Override
