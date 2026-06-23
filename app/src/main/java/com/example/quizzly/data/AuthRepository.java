@@ -7,6 +7,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -184,6 +185,33 @@ public class AuthRepository {
 
     public void logout() {
         firebaseAuth.signOut();
+    }
+
+    public Task<DocumentSnapshot> getUserProfile(String uid) {
+        return db.collection("users").document(uid).get();
+    }
+
+    public Task<Void> updateUserProfile(String uid, String displayName, String birthdate, String phone) {
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("displayName", displayName);
+        updates.put("birthdate", birthdate);
+        updates.put("phone", phone);
+
+        // Cập nhật Firestore trước, Auth profile sau (Auth là phụ)
+        return db.collection("users").document(uid).update(updates)
+                .continueWithTask(task -> {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+                    FirebaseUser user = firebaseAuth.getCurrentUser();
+                    if (user != null) {
+                        UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
+                                .setDisplayName(displayName)
+                                .build();
+                        return user.updateProfile(profileUpdate);
+                    }
+                    return Tasks.forResult(null);
+                });
     }
 
     public FirebaseUser getCurrentUser() {
