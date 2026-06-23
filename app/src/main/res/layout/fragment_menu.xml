@@ -11,7 +11,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tùy chỉnh"
+        android:text="@string/menu_title"
         android:textColor="#111111"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -32,6 +32,7 @@
 
         <!-- View Profile -->
         <LinearLayout
+            android:id="@+id/llProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -50,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
-                android:text="Xem hồ sơ"
+                android:text="@string/menu_profile"
                 android:textColor="#111111"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -63,6 +64,7 @@
 
         <!-- Language -->
         <LinearLayout
+            android:id="@+id/llLanguage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -81,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
-                android:text="Ngôn ngữ"
+                android:text="@string/menu_language"
                 android:textColor="#111111"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -112,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
-                android:text="Chế độ tối"
+                android:text="@string/menu_dark_mode"
                 android:textColor="#111111"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -141,7 +143,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Đăng xuất "
+            android:text="@string/menu_logout"
             android:textColor="#8B0000"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -149,6 +151,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_marginStart="10dp"
             android:src="@drawable/ic_logout" />
     </LinearLayout>
 
