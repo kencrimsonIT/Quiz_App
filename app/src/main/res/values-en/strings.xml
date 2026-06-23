@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Quizz App</string>
+    <string name="login_title">Welcome\nback!</string>
+    <string name="email_hint">Your email</string>
+    <string name="password_hint">Your password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="login_button">Sign In</string>
+    <string name="or_login_with">Or sign in with</string>
+    <string name="no_account">Don\'t have an account? </string>
+    <string name="register_now">Sign up now</string>
+    <string name="register_title">Hello! Register\nto get started.</string>
+    <string name="display_name_hint">Your display name</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="register_button">Sign Up</string>
+    <string name="already_have_account">Already have an account? </string>
+    <string name="login_now">Sign in now</string>
+    <string name="forgot_password_title">Forgot Password?</string>
+    <string name="forgot_password_subtitle">Don\'t worry! Enter your email\nto recover your password.</string>
+    <string name="recovery_email_hint">Your recovery email</string>
+    <string name="send_otp_button">Send OTP</string>
+    <string name="remember_password">Remember your password? </string>
+
+    <!-- OTP Verify -->
+    <string name="otp_title">OTP Verification</string>
+    <string name="otp_subtitle">Please enter the OTP we just sent to your email.</string>
+    <string name="otp_button">Confirm</string>
+    <string name="otp_not_received">Didn\'t receive OTP? </string>
+    <string name="otp_resend">Resend</string>
+
+    <!-- Reset Password -->
+    <string name="reset_password_title">Set New Password</string>
+    <string name="reset_password_subtitle">Your new password must be completely different from the previously used one.</string>
+    <string name="new_password_hint">New password</string>
+    <string name="confirm_new_password_hint">Confirm new password</string>
+    <string name="create_password_button">Create Password</string>
+
+    <!-- Facebook Login -->
+    <string name="facebook_app_id">1691375582370697</string>
+    <string name="fb_login_protocol_scheme">fb1691375582370697</string>
+    <string name="facebook_client_token">33419bc76667af451728d73066898a5d</string>
+
+    <!-- Home -->
+    <string name="greeting">Hello 👋</string>
+    <string name="suggested_for_you">Suggested for you</string>
+
+    <!-- Menu -->
+    <string name="menu_title">Settings</string>
+    <string name="menu_profile">View Profile</string>
+    <string name="menu_language">Language</string>
+    <string name="menu_dark_mode">Dark Mode</string>
+    <string name="menu_logout">Logout </string>
+
+    <!-- Language Setting -->
+    <string name="language_setting_title">Choose your preferred language</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_english">English</string>
+</resources>

@@ -34,8 +34,19 @@
     <string name="confirm_new_password_hint">Xác nhận mật khẩu mới</string>
     <string name="create_password_button">Tạo mật khẩu</string>
 
-    <!-- Facebook Login -->
-    <string name="facebook_app_id">1691375582370697</string>
-    <string name="fb_login_protocol_scheme">fb1691375582370697</string>
-    <string name="facebook_client_token">33419bc76667af451728d73066898a5d</string>
+    <!-- Home -->
+    <string name="greeting">Xin chào 👋</string>
+    <string name="suggested_for_you">Gợi ý cho bạn</string>
+
+    <!-- Menu -->
+    <string name="menu_title">Tùy chỉnh</string>
+    <string name="menu_profile">Xem hồ sơ</string>
+    <string name="menu_language">Ngôn ngữ</string>
+    <string name="menu_dark_mode">Chế độ tối</string>
+    <string name="menu_logout">Đăng xuất </string>
+
+    <!-- Language Setting -->
+    <string name="language_setting_title">Hãy chọn ngôn ngữ bạn thích</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_english">English</string>
 </resources>
