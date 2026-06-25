@@ -12,7 +12,28 @@
           "package_name": "com.example.quizzly"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "826452341408-g8dbene8gj2qdtb75ithsi52n91197vl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quizzly",
+            "certificate_hash": "d7cc75c85f79e81b654df23234fec0e885a6e075"
+          }
+        },
+        {
+          "client_id": "826452341408-k8jkj64gjjp8lljsvc2mlrkiugqhj1ao.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quizzly",
+            "certificate_hash": "1f40a27ad64fc29ba6fdd5a2b3423465717cd372"
+          }
+        },
+        {
+          "client_id": "826452341408-ene9ps68c54kdkg01kk1lef1ah8tns9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBl-_rE33i6SuXbPT-ajygEiTucIbD4p3U"
@@ -20,7 +41,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826452341408-ene9ps68c54kdkg01kk1lef1ah8tns9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

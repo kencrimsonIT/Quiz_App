@@ -209,5 +209,32 @@
             app:argType="string"
             android:defaultValue="" />
     </fragment>
+
+    <fragment
+        android:id="@+id/subjectListFragment"
+        android:name="com.example.quizzly.ui.fragments.SubjectListFragment"
+        android:label="Subject List"
+        tools:layout="@layout/fragment_subject_list">
+        <action
+            android:id="@+id/action_subjectListFragment_to_subtopicListFragment"
+            app:destination="@id/subtopicListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/subtopicListFragment"
+        android:name="com.example.quizzly.ui.fragments.SubtopicListFragment"
+        android:label="Subtopic List"
+        tools:layout="@layout/fragment_subtopic_list">
+        <action
+            android:id="@+id/action_subtopicListFragment_to_quizDetailFragment"
+            app:destination="@id/quizDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/quizDetailFragment"
+        android:name="com.example.quizzly.ui.fragments.QuizDetailFragment"
+        android:label="Quiz Detail"
+        tools:layout="@layout/fragment_quiz_detail">
+    </fragment>
 </navigation>
 

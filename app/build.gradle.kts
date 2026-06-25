@@ -49,7 +49,7 @@ android {
 
     buildFeatures {
         viewBinding = true
-        buildConfig = true  // ← cần thêm để dùng buildConfigField
+        buildConfig = true
     }
 }
 
