@@ -8,16 +8,31 @@
     android:background="@color/quiz_background"
     android:padding="20dp">
 
+    <ImageButton
+        android:id="@+id/btnExit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/holo_red_light"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:contentDescription="Thoát"
+        app:tint="@color/white"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTimer" />
+
     <ProgressBar
         android:id="@+id/quizProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
         android:max="10"
         android:progress="3"
         app:layout_constraintEnd_toStartOf="@+id/tvTimer"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnExit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -25,7 +40,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="00:15"
         android:textColor="@color/quiz_primary"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -57,7 +71,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-           />
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -78,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutQuestionCard"
-       />
+        />
 
     <Button
         android:id="@+id/btnOptionB"
@@ -97,7 +111,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnOptionA"
-    />
+        />
 
     <Button
         android:id="@+id/btnOptionC"
@@ -116,7 +130,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnOptionB"
-      />
+        />
 
     <Button
         android:id="@+id/btnOptionD"
@@ -135,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnOptionC"
-       />
+        />
 
     <Button
         android:id="@+id/btnNext"
