@@ -135,6 +135,9 @@
         <action
             android:id="@+id/action_homeFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_qizzFragment"
+            app:destination="@id/qizzFragment" />
     </fragment>
 
     <fragment
@@ -195,4 +198,16 @@
         android:label="Profile Editing"
         tools:layout="@layout/fragment_profile_editing">
     </fragment>
+
+    <fragment
+        android:id="@+id/qizzFragment"
+        android:name="com.example.quizzly.ui.fragments.QizzFragment"
+        android:label="Quiz"
+        tools:layout="@layout/fragment_qiz">
+        <argument
+            android:name="SUBJECT_ID"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 </navigation>
+

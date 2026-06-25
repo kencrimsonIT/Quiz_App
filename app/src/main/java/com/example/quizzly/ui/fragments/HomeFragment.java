@@ -44,11 +44,40 @@ public class HomeFragment extends Fragment {
         binding.navMenu.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_menuFragment);
         });
+        binding.cardBiology.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("SUBJECT_ID", "biology");
+            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
+        });
+
+        binding.cardChemistry.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("SUBJECT_ID", "chemistry");
+            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
+        });
+
+        binding.cardMath.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("SUBJECT_ID", "maths");
+            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
+        });
+
+        binding.cardPhysics.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("SUBJECT_ID", "physics");
+            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
+        });
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void navigateToQuiz(View view, String subjectId) {
+        Bundle bundle = new Bundle();
+        bundle.putString("SUBJECT_ID", subjectId);
+        Navigation.findNavController(view).navigate(R.id.qizzFragment, bundle);
     }
 }

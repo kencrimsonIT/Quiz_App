@@ -14,5 +14,8 @@
     <color name="quiz_background">#DDF2FF</color>
     <color name="text_dark">#1F1F1F</color>
     <color name="text_muted">#666666</color>
+    <color name="correct_green">#DCB8F894</color>
+    <color name="wrong_red">#F0A7A7</color>
+
 </resources>
 
