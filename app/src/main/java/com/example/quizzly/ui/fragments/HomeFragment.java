@@ -2,8 +2,11 @@ package com.example.quizzly.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.AccelerateInterpolator;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,43 +44,86 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        // --- Bottom nav tab switching ---
         binding.navMenu.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_menuFragment);
         });
-        binding.cardBiology.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putString("SUBJECT_ID", "biology");
-            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
+
+        binding.navQuiz.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_subjectListFragment);
         });
 
-        binding.cardChemistry.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putString("SUBJECT_ID", "chemistry");
-            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
+        // --- Subject cards với scale bounce animation ---
+        setupCardWithAnim(binding.cardBiology,   "biology",   view);
+        setupCardWithAnim(binding.cardChemistry, "chemistry", view);
+        setupCardWithAnim(binding.cardMath,      "maths",     view);
+        setupCardWithAnim(binding.cardPhysics,   "physics",   view);
+
+        // --- Staggered entrance animation ---
+        playStaggeredEntrance(
+                binding.cardBiology,
+                binding.cardChemistry,
+                binding.cardMath,
+                binding.cardPhysics);
+    }
+
+    /**
+     * Gắn hiệu ứng scale bounce khi nhấn/nhả + navigate khi click.
+     */
+    private void setupCardWithAnim(View card, String subjectId, View navView) {
+        if (card == null) return;
+
+        card.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    v.animate()
+                            .scaleX(0.93f).scaleY(0.93f)
+                            .setDuration(100)
+                            .setInterpolator(new AccelerateInterpolator())
+                            .start();
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    v.animate()
+                            .scaleX(1.0f).scaleY(1.0f)
+                            .setDuration(200)
+                            .setInterpolator(new OvershootInterpolator(2.5f))
+                            .start();
+                    break;
+            }
+            return false;
         });
 
-        binding.cardMath.setOnClickListener(v -> {
+        card.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putString("SUBJECT_ID", "maths");
-            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
+            bundle.putString("SUBJECT_ID", subjectId);
+            Navigation.findNavController(navView).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
         });
+    }
 
-        binding.cardPhysics.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putString("SUBJECT_ID", "physics");
-            Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_qizzFragment, bundle);
-        });
+    /**
+     * Hiệu ứng xuất hiện lần lượt (stagger) cho các card khi vào Home.
+     */
+    private void playStaggeredEntrance(View... cards) {
+        int delayStep = 90;
+        for (int i = 0; i < cards.length; i++) {
+            View card = cards[i];
+            if (card == null) continue;
+            card.setAlpha(0f);
+            card.setTranslationY(50f);
+            card.animate()
+                    .alpha(1f)
+                    .translationY(0f)
+                    .setDuration(380)
+                    .setStartDelay((long) i * delayStep)
+                    .setInterpolator(new OvershootInterpolator(1.1f))
+                    .start();
+        }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    private void navigateToQuiz(View view, String subjectId) {
-        Bundle bundle = new Bundle();
-        bundle.putString("SUBJECT_ID", subjectId);
-        Navigation.findNavController(view).navigate(R.id.qizzFragment, bundle);
     }
 }
