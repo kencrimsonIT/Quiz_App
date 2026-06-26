@@ -134,10 +134,29 @@
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_menuFragment"
-            app:destination="@id/menuFragment" />
+            app:destination="@id/menuFragment"
+            app:enterAnim="@anim/fade_slide_up"
+            app:exitAnim="@anim/fade_slide_out"
+            app:popEnterAnim="@anim/fade_slide_up"
+            app:popExitAnim="@anim/fade_slide_out"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_homeFragment_to_qizzFragment"
-            app:destination="@id/qizzFragment" />
+            app:destination="@id/qizzFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_subjectListFragment"
+            app:destination="@id/subjectListFragment"
+            app:enterAnim="@anim/fade_slide_up"
+            app:exitAnim="@anim/fade_slide_out"
+            app:popEnterAnim="@anim/fade_slide_up"
+            app:popExitAnim="@anim/fade_slide_out"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -148,6 +167,10 @@
         <action
             android:id="@+id/action_menuFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/fade_slide_up"
+            app:exitAnim="@anim/fade_slide_out"
+            app:popEnterAnim="@anim/fade_slide_up"
+            app:popExitAnim="@anim/fade_slide_out"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <action
@@ -169,6 +192,15 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_menuFragment_to_subjectListFragment"
+            app:destination="@id/subjectListFragment"
+            app:enterAnim="@anim/fade_slide_up"
+            app:exitAnim="@anim/fade_slide_out"
+            app:popEnterAnim="@anim/fade_slide_up"
+            app:popExitAnim="@anim/fade_slide_out"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -218,6 +250,31 @@
         <action
             android:id="@+id/action_subjectListFragment_to_subtopicListFragment"
             app:destination="@id/subtopicListFragment" />
+        <action
+            android:id="@+id/action_subjectListFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/fade_slide_up"
+            app:exitAnim="@anim/fade_slide_out"
+            app:popEnterAnim="@anim/fade_slide_up"
+            app:popExitAnim="@anim/fade_slide_out"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_subjectListFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:enterAnim="@anim/fade_slide_up"
+            app:exitAnim="@anim/fade_slide_out"
+            app:popEnterAnim="@anim/fade_slide_up"
+            app:popExitAnim="@anim/fade_slide_out"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_subjectListFragment_to_qizzFragment"
+            app:destination="@id/qizzFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment

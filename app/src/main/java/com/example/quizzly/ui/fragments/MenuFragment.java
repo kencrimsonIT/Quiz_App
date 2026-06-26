@@ -41,6 +41,10 @@ public class MenuFragment extends Fragment {
             Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_homeFragment);
         });
 
+        binding.navQuiz.setOnClickListener(v -> {
+            Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_subjectListFragment);
+        });
+
         binding.llLanguage.setOnClickListener(v -> {
             Navigation.findNavController(view).navigate(R.id.action_menuFragment_to_languageSetting);
         });

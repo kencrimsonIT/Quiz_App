@@ -37,6 +37,7 @@
 
             <!-- Sinh học -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardBiology"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="16dp"
@@ -84,6 +85,7 @@
 
             <!-- Hóa học -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardChemistry"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="16dp"
@@ -127,6 +129,7 @@
 
             <!-- Toán học -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardMath"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="16dp"
@@ -170,6 +173,7 @@
 
             <!-- Vật lý -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardPhysics"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="16dp"
@@ -213,6 +217,7 @@
 
             <!-- Thể thao -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardSports"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginBottom="16dp"
