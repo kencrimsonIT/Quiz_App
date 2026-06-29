@@ -8,14 +8,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.quizzly.R;
+import com.example.quizzly.viewmodel.AuthViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class AdminHomeFragment extends Fragment {
 
     private FirebaseFirestore db;
+    private AuthViewModel authViewModel;
     private TextView tvTotalQuestions, tvTotalUsers;
 
     @Nullable
@@ -31,12 +34,17 @@ public class AdminHomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         db = FirebaseFirestore.getInstance();
+        authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
         tvTotalQuestions = view.findViewById(R.id.tvTotalQuestions);
         tvTotalUsers = view.findViewById(R.id.tvTotalUsers);
 
-
         loadDashboardStats();
         view.findViewById(R.id.btnBack).setOnClickListener(v -> Navigation.findNavController(view).popBackStack());
+
+        view.findViewById(R.id.llLogout).setOnClickListener(v -> {
+            authViewModel.logout();
+            Navigation.findNavController(view).navigate(R.id.action_adminFragment_to_loginFragment);
+        });
     }
 
     private void loadDashboardStats() {
