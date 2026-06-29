@@ -49,6 +49,15 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_adminFragment"
+            app:destination="@id/adminFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -293,5 +302,11 @@
         android:label="Quiz Detail"
         tools:layout="@layout/fragment_quiz_detail">
     </fragment>
+
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.quizzly.ui.fragments.AdminHomeFragment"
+        android:label="Admin Dashboard"
+        tools:layout="@layout/fragment_admin" />
 </navigation>
 
