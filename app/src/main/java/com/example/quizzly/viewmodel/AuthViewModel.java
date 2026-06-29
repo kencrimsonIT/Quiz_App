@@ -12,6 +12,8 @@ import java.util.Map;
 public class AuthViewModel extends ViewModel {
     private final AuthRepository authRepository;
 
+    private final MutableLiveData<String> userRoleLiveData = new MutableLiveData<>();
+    public LiveData<String> getUserRoleLiveData() { return userRoleLiveData; }
     private final MutableLiveData<FirebaseUser> userLiveData = new MutableLiveData<>();
     private final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
     private final MutableLiveData<Boolean> loadingLiveData = new MutableLiveData<>();
@@ -215,7 +217,7 @@ public class AuthViewModel extends ViewModel {
             errorLiveData.setValue("User not logged in");
         }
     }
-    
+
     // Helper to update profile of current logged‑in user
     public void updateCurrentUserProfile(String displayName, String birthdate, String phone) {
         String uid = getCurrentUserUid();
@@ -245,5 +247,25 @@ public class AuthViewModel extends ViewModel {
     public String getCurrentUserUid() {
         FirebaseUser user = userLiveData.getValue();
         return user != null ? user.getUid() : null;
-}
+    }
+
+    public void checkUserRole(String uid) {
+        loadingLiveData.setValue(true);
+        authRepository.getUserProfile(uid).addOnCompleteListener(task -> {
+            loadingLiveData.setValue(false);
+            if (task.isSuccessful() && task.getResult() != null && task.getResult().exists()) {
+                String role = task.getResult().getString("role");
+                if (role == null || role.isEmpty()) {
+                    role = "user";
+                }
+                userRoleLiveData.setValue(role);
+            } else {
+                errorLiveData.setValue("Không thể tải thông tin phân quyền");
+            }
+        });
+    }
+
+    public void resetRoleState() {
+        userRoleLiveData.setValue(null);
+    }
 }
