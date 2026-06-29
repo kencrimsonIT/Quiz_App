@@ -297,6 +297,19 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/adminFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_adminFragment_to_userManagementFragment"
+            app:destination="@id/userManagementFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
+
+    <fragment
+        android:id="@+id/userManagementFragment"
+        android:name="com.example.quizzly.ui.fragments.UserManagementFragment"
+        android:label="User Management"
+        tools:layout="@layout/fragment_user_management" />
 </navigation>
 
