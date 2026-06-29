@@ -59,6 +59,7 @@ public class AuthRepository {
                                     userData.put("displayName", user.getDisplayName());
                                     userData.put("email", user.getEmail());
                                     userData.put("createdAt", com.google.firebase.Timestamp.now());
+                                    userData.put("role", "user");
 
                                     return db.collection("users")
                                             .document(user.getUid())
@@ -97,6 +98,7 @@ public class AuthRepository {
                     userData.put("displayName", displayName);
                     userData.put("email", email);
                     userData.put("createdAt", com.google.firebase.Timestamp.now());
+                    userData.put("role", "user");
 
                     return db.collection("users")
                             .document(user.getUid())
@@ -113,7 +115,7 @@ public class AuthRepository {
         otpData.put("otp", otp);
         otpData.put("expiredAt", expiredAt);
         otpData.put("createdAt", FieldValue.serverTimestamp());
-        
+
         return db.collection("otps").document(email).set(otpData).continueWithTask(task -> {
             if (task.isSuccessful()) {
                 EmailJSService.sendEmail(email, otp);
@@ -169,7 +171,7 @@ public class AuthRepository {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                
+
                 String errorMsg = "Lỗi đổi mật khẩu (" + code + ")";
                 try {
                     // Cố gắng lấy thông báo lỗi từ JSON trả về
@@ -177,7 +179,7 @@ public class AuthRepository {
                         errorMsg = response.toString().split("\"error\":\"")[1].split("\"")[0];
                     }
                 } catch (Exception e) {}
-                
+
                 throw new Exception(errorMsg);
             }
         });
