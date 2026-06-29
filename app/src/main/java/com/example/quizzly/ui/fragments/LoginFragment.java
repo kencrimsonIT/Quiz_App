@@ -54,14 +54,12 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         authViewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
-        // Cấu hình Google Sign-In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso);
 
-        // Đăng ký Activity Result cho Google Sign-In
         googleSignInLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -80,7 +78,6 @@ public class LoginFragment extends Fragment {
                 }
         );
 
-        // Cấu hình Facebook Login
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -121,19 +118,14 @@ public class LoginFragment extends Fragment {
         });
 
         binding.tvRegisterLink.setOnClickListener(v ->
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment)
+                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment)
         );
 
         binding.tvForgotPassword.setOnClickListener(v ->
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
+                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         );
 
-        authViewModel.getUserLiveData().observe(getViewLifecycleOwner(), firebaseUser -> {
-            if (firebaseUser != null) {
-                authViewModel.checkUserRole(firebaseUser.getUid());
-            }
-        });
-
+        // Lắng nghe kết quả phân vai trò cuối cùng để chuyển hướng
         authViewModel.getUserRoleLiveData().observe(getViewLifecycleOwner(), role -> {
             if (role != null) {
                 if (role.equals("admin")) {
@@ -141,7 +133,6 @@ public class LoginFragment extends Fragment {
                 } else {
                     Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment);
                 }
-                // Xóa trạng thái role sau khi đã điều hướng
                 authViewModel.resetRoleState();
             }
         });
