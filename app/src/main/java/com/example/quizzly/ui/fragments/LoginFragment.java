@@ -120,17 +120,29 @@ public class LoginFragment extends Fragment {
             LoginManager.getInstance().logInWithReadPermissions(this, Collections.singletonList("email"));
         });
 
-        binding.tvRegisterLink.setOnClickListener(v -> 
+        binding.tvRegisterLink.setOnClickListener(v ->
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment)
         );
 
-        binding.tvForgotPassword.setOnClickListener(v -> 
+        binding.tvForgotPassword.setOnClickListener(v ->
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         );
 
         authViewModel.getUserLiveData().observe(getViewLifecycleOwner(), firebaseUser -> {
             if (firebaseUser != null) {
-                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment);
+                authViewModel.checkUserRole(firebaseUser.getUid());
+            }
+        });
+
+        authViewModel.getUserRoleLiveData().observe(getViewLifecycleOwner(), role -> {
+            if (role != null) {
+                if (role.equals("admin")) {
+                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_adminFragment);
+                } else {
+                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment);
+                }
+                // Xóa trạng thái role sau khi đã điều hướng
+                authViewModel.resetRoleState();
             }
         });
 
