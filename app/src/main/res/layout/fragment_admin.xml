@@ -296,6 +296,47 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <!-- Manage Subjects -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btnManageSubjects"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,1:1"
+        android:layout_marginStart="12dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/btnManageUsers"
+        app:layout_constraintStart_toEndOf="@id/guidelineCenterAdmin"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@android:drawable/ic_menu_gallery"
+                app:tint="#444444"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quản lý\nchủ đề"
+                android:textColor="#111111"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
     <!-- Logout Button -->
     <LinearLayout
         android:id="@+id/llLogout"
@@ -307,7 +348,7 @@
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:layout_marginBottom="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btnQuickAdd"
+        app:layout_constraintTop_toBottomOf="@id/btnManageSubjects"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:foreground="?android:attr/selectableItemBackground"
