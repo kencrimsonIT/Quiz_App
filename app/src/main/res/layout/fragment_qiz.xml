@@ -74,7 +74,7 @@
             android:padding="18dp"
             android:text="Ai đẹp trai nhất?"
             android:textColor="#FFFFFF"
-            android:textSize="26sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
@@ -83,11 +83,12 @@
             android:layout_height="72dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/bg_qizz_option_default"
+            android:backgroundTint="@null"
             android:stateListAnimator="@null"
             android:text="Thằng đặt câu hỏi này"
             android:textAllCaps="false"
             android:textColor="#263238"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
@@ -96,11 +97,12 @@
             android:layout_height="72dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_qizz_option_default"
+            android:backgroundTint="@null"
             android:stateListAnimator="@null"
             android:text="Thằng trả lời câu hỏi này"
             android:textAllCaps="false"
             android:textColor="#263238"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
@@ -109,11 +111,12 @@
             android:layout_height="72dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_qizz_option_default"
+            android:backgroundTint="@null"
             android:stateListAnimator="@null"
             android:text="Shigeo Tokuda"
             android:textAllCaps="false"
             android:textColor="#263238"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
@@ -122,11 +125,12 @@
             android:layout_height="72dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_qizz_option_default"
+            android:backgroundTint="@null"
             android:stateListAnimator="@null"
             android:text="Độ Mixi"
             android:textAllCaps="false"
             android:textColor="#263238"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Space
@@ -139,11 +143,12 @@
             android:layout_width="match_parent"
             android:layout_height="72dp"
             android:background="@drawable/bg_qizz_check_button"
+            android:backgroundTint="@null"
             android:stateListAnimator="@null"
             android:text="Chọn"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
-            android:textSize="26sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <LinearLayout
