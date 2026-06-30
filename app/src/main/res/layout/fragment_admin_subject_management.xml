@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_blue">
+
+    <!-- Top bar -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_back_arrow"
+        app:tint="#333333"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="24dp"
+        android:text="Quản lý chủ đề"
+        android:textColor="#111111"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnBack"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Thêm, sửa hoặc xóa các chủ đề"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <!-- Add button -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btnAddSubject"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:cardBackgroundColor="@color/primary_blue"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingHorizontal="20dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@android:drawable/ic_input_add"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Thêm chủ đề mới"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Progress bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAddSubject" />
+
+    <!-- Empty state -->
+    <TextView
+        android:id="@+id/tvEmptyState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chưa có chủ đề nào.\nHãy thêm chủ đề mới!"
+        android:textColor="#999999"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:lineSpacingExtra="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAddSubject"
+        android:layout_marginTop="60dp" />
+
+    <!-- Subject list -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnAddSubject">
+
+        <LinearLayout
+            android:id="@+id/layoutSubjectContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <!-- Subject cards are added programmatically here -->
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
