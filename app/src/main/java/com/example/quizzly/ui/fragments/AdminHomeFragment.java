@@ -45,6 +45,10 @@ public class AdminHomeFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_adminFragment_to_userManagementFragment)
         );
 
+        view.findViewById(R.id.btnManageSubjects).setOnClickListener(v ->
+                Navigation.findNavController(view).navigate(R.id.action_adminFragment_to_adminSubjectManagementFragment)
+        );
+
         view.findViewById(R.id.llLogout).setOnClickListener(v -> {
             authViewModel.logout();
             Navigation.findNavController(view).navigate(R.id.action_adminFragment_to_loginFragment);
