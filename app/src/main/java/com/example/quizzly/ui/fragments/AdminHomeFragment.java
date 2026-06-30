@@ -49,6 +49,17 @@ public class AdminHomeFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_adminFragment_to_adminSubjectManagementFragment)
         );
 
+        view.findViewById(R.id.btnManageQuestions).setOnClickListener(v ->
+                Navigation.findNavController(view).navigate(R.id.action_adminFragment_to_adminQuestionManagementFragment)
+        );
+
+        view.findViewById(R.id.btnQuickAdd).setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putBoolean("openAddDialog", true);
+            Navigation.findNavController(view).navigate(
+                    R.id.action_adminFragment_to_adminQuestionManagementFragment, bundle);
+        });
+
         view.findViewById(R.id.llLogout).setOnClickListener(v -> {
             authViewModel.logout();
             Navigation.findNavController(view).navigate(R.id.action_adminFragment_to_loginFragment);
