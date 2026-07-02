@@ -161,7 +161,7 @@ public class AdminQuestionManagementFragment extends Fragment {
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         card.setCardElevation(2f);
         card.setRadius(20f);
-        card.setCardBackgroundColor(0xFFFFFFFF);
+        card.setCardBackgroundColor(requireContext().getColor(R.color.card_background));
         card.setUseCompatPadding(true);
 
         LinearLayout content = new LinearLayout(requireContext());
@@ -181,7 +181,7 @@ public class AdminQuestionManagementFragment extends Fragment {
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         tvSubject.setLayoutParams(subjectLp);
         tvSubject.setText(entry.subjectName);
-        tvSubject.setTextColor(0xFF0039B6);
+        tvSubject.setTextColor(requireContext().getColor(R.color.primary_blue));
         tvSubject.setTextSize(12);
         tvSubject.setTypeface(null, android.graphics.Typeface.BOLD);
         tvSubject.setPadding((int) (10 * density), (int) (2 * density),
@@ -199,7 +199,7 @@ public class AdminQuestionManagementFragment extends Fragment {
         int idx = q.getCorrectAnswer();
         String correctLabel = (idx >= 0 && idx < labels.length) ? labels[idx] : "?";
         tvCorrect.setText("✓ " + correctLabel);
-        tvCorrect.setTextColor(0xFF06C64F);
+        tvCorrect.setTextColor(requireContext().getColor(R.color.quiz_option_correct_bg));
         tvCorrect.setTextSize(12);
         tvCorrect.setTypeface(null, android.graphics.Typeface.BOLD);
         headerRow.addView(tvCorrect);
@@ -213,7 +213,7 @@ public class AdminQuestionManagementFragment extends Fragment {
         qLp.setMargins(0, (int) (8 * density), 0, (int) (6 * density));
         tvQuestion.setLayoutParams(qLp);
         tvQuestion.setText(q.getText());
-        tvQuestion.setTextColor(0xFF111111);
+        tvQuestion.setTextColor(requireContext().getColor(R.color.text_primary));
         tvQuestion.setTextSize(15);
         tvQuestion.setTypeface(null, android.graphics.Typeface.BOLD);
         tvQuestion.setMaxLines(2);
@@ -231,10 +231,10 @@ public class AdminQuestionManagementFragment extends Fragment {
                 tvOpt.setLayoutParams(new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 tvOpt.setText("  " + labels2[i] + ". " + optText);
-                tvOpt.setTextColor(0xFF555555);
+                tvOpt.setTextColor(requireContext().getColor(R.color.text_tertiary));
                 tvOpt.setTextSize(13);
                 if (i == q.getCorrectAnswer()) {
-                    tvOpt.setTextColor(0xFF06C64F);
+                    tvOpt.setTextColor(requireContext().getColor(R.color.quiz_option_correct_bg));
                     tvOpt.setTypeface(null, android.graphics.Typeface.BOLD);
                 }
                 content.addView(tvOpt);
@@ -257,7 +257,7 @@ public class AdminQuestionManagementFragment extends Fragment {
         editLp.setMargins(0, 0, (int) (8 * density), 0);
         btnEdit.setLayoutParams(editLp);
         btnEdit.setImageResource(android.R.drawable.ic_menu_edit);
-        btnEdit.setColorFilter(0xFF555555);
+        btnEdit.setColorFilter(requireContext().getColor(R.color.text_tertiary));
         btnEdit.setBackgroundResource(R.drawable.bg_button);
         btnEdit.setPadding((int) (8 * density), (int) (8 * density),
                 (int) (8 * density), (int) (8 * density));
@@ -301,7 +301,7 @@ public class AdminQuestionManagementFragment extends Fragment {
             }
         }
 
-        new AlertDialog.Builder(requireContext(), android.R.style.Theme_Material_Light_Dialog)
+        new AlertDialog.Builder(requireContext())
                 .setTitle("Lọc theo chủ đề")
                 .setSingleChoiceItems(names, checkedItem, (dialog, which) -> {
                     if (which == 0) {
@@ -330,7 +330,7 @@ public class AdminQuestionManagementFragment extends Fragment {
 
     private void showQuestionDialog(@Nullable Question existingQuestion) {
         if (subjects.isEmpty()) {
-            new AlertDialog.Builder(requireContext(), android.R.style.Theme_Material_Light_Dialog)
+            new AlertDialog.Builder(requireContext())
                     .setTitle("Chưa có chủ đề")
                     .setMessage("Vui lòng thêm chủ đề trước khi tạo câu hỏi.")
                     .setPositiveButton("OK", null)
@@ -338,7 +338,7 @@ public class AdminQuestionManagementFragment extends Fragment {
             return;
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), android.R.style.Theme_Material_Light_Dialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         LayoutInflater inflater = LayoutInflater.from(requireContext());
         View dialogView = inflater.inflate(R.layout.dialog_question_form, null);
         builder.setView(dialogView);
@@ -397,7 +397,7 @@ public class AdminQuestionManagementFragment extends Fragment {
                     break;
                 }
             }
-            new AlertDialog.Builder(requireContext(), android.R.style.Theme_Material_Light_Dialog)
+            new AlertDialog.Builder(requireContext())
                     .setTitle("Chọn chủ đề")
                     .setSingleChoiceItems(subjectNames, selectedIdx, (dialog, which) -> {
                         selectedSubjectId[0] = subjects.get(which).id;
@@ -500,7 +500,7 @@ public class AdminQuestionManagementFragment extends Fragment {
     }
 
     private void showDeleteConfirmation(Question question) {
-        new AlertDialog.Builder(requireContext(), android.R.style.Theme_Material_Light_Dialog)
+        new AlertDialog.Builder(requireContext())
                 .setTitle("Xóa câu hỏi")
                 .setMessage("Bạn có chắc muốn xóa câu hỏi này?")
                 .setPositiveButton("Xóa", (dialog, which) -> deleteQuestion(question.getId()))
