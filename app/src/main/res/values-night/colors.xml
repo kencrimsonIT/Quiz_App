@@ -47,7 +47,7 @@
     <color name="logout_button_bg">#4A2020</color>
 
     <!-- Quiz option colors for dark mode -->
-    <color name="quiz_option_default_bg">#2A2A3E</color>
+    <color name="quiz_option_default_bg">#3A3A4E</color>
     <color name="quiz_option_selected_bg">#1A4DC9</color>
     <color name="quiz_option_correct_bg">#1B8C3A</color>
     <color name="quiz_option_wrong_bg">#8B1A1A</color>
