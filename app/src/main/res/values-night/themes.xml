@@ -1,7 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Dark theme. -->
     <style name="Base.Theme.QuizzApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">#1A2A4A</item>
+        <item name="colorOnPrimaryContainer">#8BB8FF</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/quiz_primary_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Surface colors -->
+        <item name="colorSurface">#1E1E2E</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <!-- Window background -->
+        <item name="android:windowBackground">#121212</item>
+
+        <!-- Status bar and navigation bar -->
+        <item name="android:statusBarColor">#121212</item>
+        <item name="android:navigationBarColor">#121212</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>
