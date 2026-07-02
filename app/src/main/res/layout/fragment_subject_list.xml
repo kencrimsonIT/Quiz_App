@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DEF2FE">
+    android:background="@color/subject_list_bg">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -12,7 +12,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="Danh sách chủ đề"
-        android:textColor="#222222"
+        android:textColor="@color/text_title"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginBottom="40dp"
-        app:cardBackgroundColor="#3B2A8C"
+        app:cardBackgroundColor="@color/fab_bg"
         app:cardCornerRadius="28dp"
         app:cardElevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,7 +63,7 @@
         android:layout_height="64dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#DEF2FE"
+        android:background="@color/subject_list_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -74,7 +74,7 @@
             android:layout_marginStart="32dp"
             android:layout_gravity="center"
             android:src="@android:drawable/ic_menu_view"
-            app:tint="#444444" />
+            app:tint="@color/icon_tint" />
         <Space
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -82,7 +82,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="80dp"
             android:layout_height="48dp"
-            app:cardBackgroundColor="#0B3CB7"
+            app:cardBackgroundColor="@color/quiz_nav_bg"
             app:cardCornerRadius="12dp"
             app:cardElevation="0dp">
             <ImageView
@@ -103,6 +103,6 @@
             android:layout_height="32dp"
             android:layout_marginEnd="32dp"
             android:src="@android:drawable/ic_menu_sort_by_size"
-            app:tint="#444444" />
+            app:tint="@color/icon_tint" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     android:id="@+id/rootQiz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9ADCF2"
+    android:background="@color/quiz_bg"
     tools:context=".ui.fragments.QizzFragment">
 
     <ProgressBar
@@ -36,7 +36,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:text="20:00"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
                 android:layout_toStartOf="@id/btnExit"
                 android:layout_marginEnd="12dp"
                 android:text="1/15"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
                 android:layout_alignParentEnd="true"
                 android:gravity="center"
                 android:text="?"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="38sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -87,7 +87,7 @@
             android:stateListAnimator="@null"
             android:text="Thằng đặt câu hỏi này"
             android:textAllCaps="false"
-            android:textColor="#263238"
+            android:textColor="@color/text_quiz_option"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
             android:stateListAnimator="@null"
             android:text="Thằng trả lời câu hỏi này"
             android:textAllCaps="false"
-            android:textColor="#263238"
+            android:textColor="@color/text_quiz_option"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -115,7 +115,7 @@
             android:stateListAnimator="@null"
             android:text="Shigeo Tokuda"
             android:textAllCaps="false"
-            android:textColor="#263238"
+            android:textColor="@color/text_quiz_option"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -129,7 +129,7 @@
             android:stateListAnimator="@null"
             android:text="Độ Mixi"
             android:textAllCaps="false"
-            android:textColor="#263238"
+            android:textColor="@color/text_quiz_option"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -249,7 +249,7 @@
                     android:layout_width="52dp"
                     android:layout_height="wrap_content"
                     android:text="✓"
-                    android:textColor="#00D45A"
+                    android:textColor="@color/check_green"
                     android:textSize="42sp" />
 
                 <TextView
@@ -290,7 +290,7 @@
                     android:layout_width="52dp"
                     android:layout_height="wrap_content"
                     android:text="×"
-                    android:textColor="#FF0000"
+                    android:textColor="@color/wrong_red_text"
                     android:textSize="44sp" />
 
                 <TextView
