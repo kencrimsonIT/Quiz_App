@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark mode color overrides -->
+
+    <!-- Background colors (dark surface) -->
+    <color name="background_blue">#121212</color>
+    <color name="quiz_background">#1A1A2E</color>
+    <color name="quiz_bg">#16213E</color>
+    <color name="subject_list_bg">#121212</color>
+    <color name="subject_card_bg">#2A2A3E</color>
+
+    <!-- Surface / Card colors (dark gray cards) -->
+    <color name="card_background">#1E1E2E</color>
+    <color name="menu_item_bg">#1E1E2E</color>
+    <color name="profile_card_bg">#1E1E2E</color>
+    <color name="profile_card_border">#3A3A5C</color>
+
+    <!-- Text colors (light on dark) -->
+    <color name="text_primary">#E8E8E8</color>
+    <color name="text_secondary">#B0B0B0</color>
+    <color name="text_tertiary">#888888</color>
+    <color name="text_hint">#666666</color>
+    <color name="text_muted">#888888</color>
+    <color name="text_dark">#E0E0E0</color>
+    <color name="text_label">#AAAAAA</color>
+    <color name="text_title">#DDDDDD</color>
+    <color name="text_language_title">#888888</color>
+    <color name="text_quiz_option">#D0D0D0</color>
+
+    <!-- Icon & Tint colors for dark mode -->
+    <color name="icon_tint">#AAAAAA</color>
+    <color name="icon_tint_light">#777777</color>
+    <color name="back_arrow_tint">#AAAAAA</color>
+    <color name="logout_text">#FF6B6B</color>
+
+    <!-- Divider colors -->
+    <color name="divider_color">#333344</color>
+    <color name="divider_language">#555566</color>
+
+    <!-- Button / Accent colors (slightly brighter for dark) -->
+    <color name="button_blue_dark">#0044CC</color>
+    <color name="quiz_nav_bg">#1A4DC9</color>
+    <color name="circle_button_bg">#0A8EC7</color>
+    <color name="result_button_bg">#0A8EC1</color>
+    <color name="dark_card_bg">#0A2A40</color>
+    <color name="fab_bg">#4A3A9C</color>
+    <color name="logout_button_bg">#4A2020</color>
+
+    <!-- Quiz option colors for dark mode -->
+    <color name="quiz_option_default_bg">#2A2A3E</color>
+    <color name="quiz_option_selected_bg">#1A4DC9</color>
+    <color name="quiz_option_correct_bg">#1B8C3A</color>
+    <color name="quiz_option_wrong_bg">#8B1A1A</color>
+
+    <!-- Input fields -->
+    <color name="hint_gray">#666666</color>
+    <color name="edittext_border">#555566</color>
+    <color name="edittext_bg">#2A2A3E</color>
+
+    <!-- Misc -->
+    <color name="check_green">#2ECC71</color>
+    <color name="wrong_red_text">#FF4444</color>
+</resources>

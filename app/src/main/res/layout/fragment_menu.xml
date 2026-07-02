@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/menu_title"
-        android:textColor="#111111"
+        android:textColor="@color/text_primary"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,12 +52,12 @@
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
                 android:text="@string/menu_profile"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-                
+
             <ImageView
-                android:layout_width="24dp"
+                android:layout_width="18dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_chevron_right" />
         </LinearLayout>
@@ -84,7 +84,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
                 android:text="@string/menu_language"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
                 
@@ -115,11 +115,12 @@
                 android:layout_weight="1"
                 android:layout_marginStart="16dp"
                 android:text="@string/menu_dark_mode"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
                 
             <Switch
+                android:id="@+id/switchDarkMode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false" />
@@ -144,7 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/menu_logout"
-            android:textColor="#8B0000"
+            android:textColor="@color/logout_text"
             android:textSize="20sp"
             android:textStyle="bold" />
             
@@ -174,7 +175,7 @@
             android:layout_marginStart="32dp"
             android:layout_gravity="center"
             android:src="@android:drawable/ic_menu_view"
-            app:tint="#444444" />
+            app:tint="@color/icon_tint" />
 
         <Space
             android:layout_width="0dp"
@@ -187,7 +188,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@android:drawable/ic_menu_help"
-            app:tint="#444444" />
+            app:tint="@color/icon_tint" />
 
         <Space
             android:layout_width="0dp"
@@ -202,7 +203,7 @@
             android:layout_marginEnd="32dp"
             android:layout_gravity="center"
             android:src="@android:drawable/ic_menu_sort_by_size"
-            app:tint="#444444" />
+            app:tint="@color/icon_tint" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

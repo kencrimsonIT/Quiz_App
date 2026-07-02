@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tên chủ đề"
-            android:textColor="#333333"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -26,7 +26,7 @@
             android:background="@drawable/bg_edittext_outline"
             android:paddingHorizontal="16dp"
             android:hint="Nhập tên chủ đề..."
-            android:textColor="#111111"
+            android:textColor="@color/text_primary"
             android:textSize="16sp" />
 
         <!-- Icon Preview -->
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Biểu tượng"
-            android:textColor="#333333"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="Icon: biology"
-                android:textColor="#666666"
+                android:textColor="@color/text_tertiary"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Màu nền"
-            android:textColor="#333333"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp"
             android:textStyle="bold" />
 

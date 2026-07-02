@@ -100,7 +100,7 @@ public class AdminSubjectManagementFragment extends Fragment {
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         card.setCardElevation(2f);
         card.setRadius(20f);
-        card.setCardBackgroundColor(0xFFFFFFFF);
+        card.setCardBackgroundColor(requireContext().getColor(R.color.card_background));
         card.setUseCompatPadding(true);
 
         LinearLayout cardContent = new LinearLayout(requireContext());
@@ -128,7 +128,7 @@ public class AdminSubjectManagementFragment extends Fragment {
         try {
             iconBg.setCardBackgroundColor(android.graphics.Color.parseColor(subject.getColor()));
         } catch (Exception e) {
-            iconBg.setCardBackgroundColor(0xFF9FE5F6);
+            iconBg.setCardBackgroundColor(requireContext().getColor(R.color.subject_card_bg));
         }
         iconBg.addView(ivIcon);
 
@@ -143,14 +143,14 @@ public class AdminSubjectManagementFragment extends Fragment {
 
         TextView tvName = new TextView(requireContext());
         tvName.setText(subject.getName());
-        tvName.setTextColor(0xFF111111);
+        tvName.setTextColor(requireContext().getColor(R.color.text_primary));
         tvName.setTextSize(17);
         tvName.setTypeface(null, android.graphics.Typeface.BOLD);
         nameCol.addView(tvName);
 
         TextView tvIconName = new TextView(requireContext());
         tvIconName.setText("Icon: " + subject.getIconName());
-        tvIconName.setTextColor(0xFF888888);
+        tvIconName.setTextColor(requireContext().getColor(R.color.text_tertiary));
         tvIconName.setTextSize(12);
         nameCol.addView(tvIconName);
 
@@ -163,7 +163,7 @@ public class AdminSubjectManagementFragment extends Fragment {
         editParams.gravity = android.view.Gravity.CENTER_VERTICAL;
         btnEdit.setLayoutParams(editParams);
         btnEdit.setImageResource(android.R.drawable.ic_menu_edit);
-        btnEdit.setColorFilter(0xFF555555);
+        btnEdit.setColorFilter(requireContext().getColor(R.color.text_tertiary));
         btnEdit.setBackgroundResource(R.drawable.bg_button);
         btnEdit.setPadding(10, 10, 10, 10);
         btnEdit.setOnClickListener(v -> showEditSubjectDialog(subject));
@@ -195,7 +195,7 @@ public class AdminSubjectManagementFragment extends Fragment {
     }
 
     private void showSubjectDialog(@Nullable Subject existingSubject) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext(), android.R.style.Theme_Material_Light_Dialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         LayoutInflater inflater = LayoutInflater.from(requireContext());
         View dialogView = inflater.inflate(R.layout.dialog_subject_form, null);
         builder.setView(dialogView);
@@ -257,7 +257,7 @@ public class AdminSubjectManagementFragment extends Fragment {
             try {
                 parsedColor = android.graphics.Color.parseColor(colorHex);
             } catch (Exception ignored) {
-                parsedColor = 0xFF9FE5F6;
+                parsedColor = requireContext().getColor(R.color.subject_card_bg);
             }
             colorOption.setBackgroundColor(parsedColor);
 
@@ -274,7 +274,7 @@ public class AdminSubjectManagementFragment extends Fragment {
                     try {
                         col = android.graphics.Color.parseColor(tag);
                     } catch (Exception e) {
-                        col = 0xFF9FE5F6;
+                        col = requireContext().getColor(R.color.subject_card_bg);
                     }
                     updateColorHighlight(opt, hex.equals(tag), col);
                 }
@@ -368,7 +368,7 @@ public class AdminSubjectManagementFragment extends Fragment {
     }
 
     private void showDeleteConfirmation(Subject subject) {
-        new AlertDialog.Builder(requireContext(), android.R.style.Theme_Material_Light_Dialog)
+        new AlertDialog.Builder(requireContext())
                 .setTitle("Xóa chủ đề")
                 .setMessage("Bạn có chắc muốn xóa chủ đề \"" + subject.getName() + "\"?")
                 .setPositiveButton("Xóa", (dialog, which) -> deleteSubject(subject.getId()))

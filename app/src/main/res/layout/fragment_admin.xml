@@ -16,7 +16,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
-        app:tint="#333333"
+        app:tint="@color/back_arrow_tint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="32dp"
@@ -28,7 +28,7 @@
         android:id="@+id/tvAdminTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#333333"
+        android:textColor="@color/text_secondary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/btnBack"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="QUẢN TRỊ VIÊN"
-        android:textColor="#111111"
+        android:textColor="@color/text_primary"
         android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tổng quan"
-        android:textColor="#111111"
+        android:textColor="@color/text_primary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
         android:layout_marginEnd="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/tvOverviewText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guidelineCenterAdmin"
@@ -109,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tổng câu hỏi"
-                android:textColor="#555555"
+                android:textColor="@color/text_label"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp" />
@@ -132,7 +132,7 @@
         android:layout_marginStart="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/tvOverviewText"
         app:layout_constraintStart_toEndOf="@id/guidelineCenterAdmin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -148,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tổng người dùng"
-                android:textColor="#555555"
+                android:textColor="@color/text_label"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -157,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="36sp"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp" />
@@ -169,7 +169,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chức năng quản trị"
-        android:textColor="#111111"
+        android:textColor="@color/text_primary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@
         android:layout_marginEnd="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/tvActionsText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guidelineCenterAdmin"
@@ -202,14 +202,14 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@android:drawable/ic_menu_sort_by_size"
-                app:tint="#444444"
+                app:tint="@color/icon_tint"
                 android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Danh sách\ncâu hỏi"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:gravity="center"/>
@@ -224,7 +224,7 @@
         android:layout_marginStart="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/tvActionsText"
         app:layout_constraintStart_toEndOf="@id/guidelineCenterAdmin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -243,13 +243,13 @@
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
                 android:src="@drawable/ic_person"
-                app:tint="#444444" />
+                app:tint="@color/icon_tint" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Danh sách\nngười dùng"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:gravity="center"/>
@@ -264,7 +264,7 @@
         android:layout_marginEnd="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/btnManageQuestions"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guidelineCenterAdmin"
@@ -282,14 +282,14 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@android:drawable/ic_input_add"
-                app:tint="#444444"
+                app:tint="@color/icon_tint"
                 android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thêm câu hỏi mới"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:gravity="center"/>
@@ -305,7 +305,7 @@
         android:layout_marginStart="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/btnManageUsers"
         app:layout_constraintStart_toEndOf="@id/guidelineCenterAdmin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -323,14 +323,14 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:src="@android:drawable/ic_menu_gallery"
-                app:tint="#444444"
+                app:tint="@color/icon_tint"
                 android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Quản lý\nchủ đề"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:gravity="center"/>
@@ -359,7 +359,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/menu_logout"
-            android:textColor="#8B0000"
+            android:textColor="@color/logout_text"
             android:textSize="20sp"
             android:textStyle="bold" />
 

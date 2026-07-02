@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/greeting"
-        android:textColor="#333333"
+        android:textColor="@color/text_secondary"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Độ Mixi"
-        android:textColor="#111111"
+        android:textColor="@color/text_primary"
         android:textSize="33sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/suggested_for_you"
-        android:textColor="#111111"
+        android:textColor="@color/text_primary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
         android:layout_marginEnd="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/tvSuggested"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
@@ -104,7 +104,7 @@
         android:layout_marginStart="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/tvSuggested"
         app:layout_constraintStart_toEndOf="@id/guidelineCenter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +126,7 @@
         android:layout_marginEnd="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/cardBiology"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/guidelineCenter"
@@ -148,7 +148,7 @@
         android:layout_marginStart="12dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="2dp"
-        app:cardBackgroundColor="#FFFFFF"
+        app:cardBackgroundColor="@color/card_background"
         app:layout_constraintTop_toBottomOf="@id/cardChemistry"
         app:layout_constraintStart_toEndOf="@id/guidelineCenter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,7 +180,7 @@
             android:layout_marginStart="32dp"
             android:layout_gravity="center"
             android:src="@android:drawable/ic_menu_view"
-            app:tint="#444444" />
+            app:tint="@color/icon_tint" />
 
         <Space
             android:layout_width="0dp"
@@ -193,7 +193,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@android:drawable/ic_menu_help"
-            app:tint="#444444" />
+            app:tint="@color/icon_tint" />
 
         <Space
             android:layout_width="0dp"
@@ -207,7 +207,7 @@
             android:layout_height="32dp"
             android:layout_marginEnd="32dp"
             android:src="@android:drawable/ic_menu_sort_by_size"
-            app:tint="#444444" />
+            app:tint="@color/icon_tint" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

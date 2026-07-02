@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tên hiển thị"
-            android:textColor="#333333"
+            android:textColor="@color/text_secondary"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -40,7 +40,7 @@
             android:layout_height="56dp"
             android:background="@drawable/bg_edittext_outline"
             android:paddingHorizontal="16dp"
-            android:textColor="#111111"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:inputType="textPersonName"
             android:layout_marginBottom="24dp" />
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ngày sinh"
-            android:textColor="#333333"
+            android:textColor="@color/text_secondary"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -67,7 +67,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:paddingHorizontal="16dp"
-                android:textColor="#111111"
+                android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:inputType="date" />
             <ImageView
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
-            android:textColor="#333333"
+            android:textColor="@color/text_secondary"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -93,7 +93,7 @@
             android:layout_height="56dp"
             android:background="@drawable/bg_edittext_outline"
             android:paddingHorizontal="16dp"
-            android:textColor="#111111"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="24dp" />
@@ -102,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Số điện thoại"
-            android:textColor="#333333"
+            android:textColor="@color/text_secondary"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
@@ -113,7 +113,7 @@
             android:layout_height="56dp"
             android:background="@drawable/bg_edittext_outline"
             android:paddingHorizontal="16dp"
-            android:textColor="#111111"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:inputType="phone" />
 
