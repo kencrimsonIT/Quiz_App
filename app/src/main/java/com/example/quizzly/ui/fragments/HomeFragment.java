@@ -54,10 +54,10 @@ public class HomeFragment extends Fragment {
         });
 
         // --- Subject cards với scale bounce animation ---
-        setupCardWithAnim(binding.cardBiology,   "biology",   view);
-        setupCardWithAnim(binding.cardChemistry, "chemistry", view);
-        setupCardWithAnim(binding.cardMath,      "maths",     view);
-        setupCardWithAnim(binding.cardPhysics,   "physics",   view);
+        setupCardWithAnim(binding.cardBiology,   "NTMYDkr2XeZTEYWbmme6", view);
+        setupCardWithAnim(binding.cardChemistry, "BfSFQSkUdeJ660KtlTnM", view);
+        setupCardWithAnim(binding.cardMath,      "nA84Q4UnyIMhLToo8EZa", view);
+        setupCardWithAnim(binding.cardPhysics,   "GQsUeRmni6PtUIJ4C6be", view);
 
         // --- Staggered entrance animation ---
         playStaggeredEntrance(
