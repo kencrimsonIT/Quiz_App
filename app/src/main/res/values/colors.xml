@@ -54,7 +54,7 @@
     <color name="logout_button_bg">#FFCDD2</color>
 
     <!-- Quiz option colors -->
-    <color name="quiz_option_default_bg">#EAF7FC</color>
+    <color name="quiz_option_default_bg">#FFFFFF</color>
     <color name="quiz_option_selected_bg">#0D42C9</color>
     <color name="quiz_option_correct_bg">#06C64F</color>
     <color name="quiz_option_wrong_bg">#C70000</color>

@@ -3,7 +3,7 @@ package com.example.quizzly.ui.fragments;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,8 +37,6 @@ public class QizzFragment extends Fragment {
     private int wrongCount = 0;
     private boolean answered = false;
 
-    private CountDownTimer countDownTimer;
-    private long remainingMillis = 20 * 60 * 1000L;
     private static final int MAX_QUESTIONS = 15;
 
     @Nullable
@@ -57,6 +55,7 @@ public class QizzFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
 
+        binding.btnBack.setOnClickListener(v -> Navigation.findNavController(view).popBackStack());
         binding.btnExit.setOnClickListener(v -> Navigation.findNavController(view).popBackStack());
         binding.btnResultExit.setOnClickListener(v -> Navigation.findNavController(view).popBackStack());
 
@@ -99,8 +98,6 @@ public class QizzFragment extends Fragment {
                             currentQuestionIndex = 0;
                             score = 0;
                             wrongCount = 0;
-                            remainingMillis = 20 * 60 * 1000L;
-                            startTimer();
                             showQuestion(currentQuestionIndex);
                         } else {
                             Toast.makeText(
@@ -161,6 +158,7 @@ public class QizzFragment extends Fragment {
         selectedIndex = index;
         resetOptionBackgrounds();
         getOptionButton(index).setBackgroundResource(com.example.quizzly.R.drawable.bg_qizz_option_selected);
+        getOptionButton(index).setBackgroundTintList(null);
         getOptionButton(index).setTextColor(Color.WHITE);
     }
 
@@ -181,13 +179,16 @@ public class QizzFragment extends Fragment {
             score++;
             binding.rootQiz.setBackgroundColor(Color.parseColor("#43F47A"));
             getOptionButton(correctAnswerIndex).setBackgroundResource(com.example.quizzly.R.drawable.bg_qizz_option_correct);
+            getOptionButton(correctAnswerIndex).setBackgroundTintList(null);
             getOptionButton(correctAnswerIndex).setTextColor(Color.parseColor("#263238"));
         } else {
             wrongCount++;
             binding.rootQiz.setBackgroundColor(Color.parseColor("#FF5B61"));
             getOptionButton(selectedIndex).setBackgroundResource(com.example.quizzly.R.drawable.bg_qizz_option_wrong);
+            getOptionButton(selectedIndex).setBackgroundTintList(null);
             getOptionButton(selectedIndex).setTextColor(Color.WHITE);
             getOptionButton(correctAnswerIndex).setBackgroundResource(com.example.quizzly.R.drawable.bg_qizz_option_correct);
+            getOptionButton(correctAnswerIndex).setBackgroundTintList(null);
             getOptionButton(correctAnswerIndex).setTextColor(Color.parseColor("#263238"));
         }
     }
@@ -202,10 +203,6 @@ public class QizzFragment extends Fragment {
     }
 
     private void showFinalResult() {
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
-
         binding.quizContent.setVisibility(View.GONE);
         binding.resultContent.setVisibility(View.VISIBLE);
         binding.rootQiz.setBackgroundColor(Color.parseColor("#0C4F8F"));
@@ -223,51 +220,18 @@ public class QizzFragment extends Fragment {
         binding.tvResultTitle.setText(success ? "Bạn đã Tây 🤩" : "Bạn chưa Tây đâu 👊");
         binding.tvCorrectCount.setText(score + "/" + total);
         binding.tvWrongCount.setText(wrongCount + "/" + total);
-        binding.tvResultTime.setText(formatTime(remainingMillis));
+        binding.tvResultTime.setText("20:00");
     }
 
     private void restartQuiz() {
         currentQuestionIndex = 0;
         score = 0;
         wrongCount = 0;
-        remainingMillis = 20 * 60 * 1000L;
         randomQuestions();
-        startTimer();
         showQuestion(currentQuestionIndex);
     }
 
-    private void startTimer() {
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
 
-        binding.tvTimer.setText(formatTime(remainingMillis));
-
-        countDownTimer = new CountDownTimer(remainingMillis, 1000L) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                remainingMillis = millisUntilFinished;
-                if (binding != null) {
-                    binding.tvTimer.setText(formatTime(remainingMillis));
-                }
-            }
-
-            @Override
-            public void onFinish() {
-                remainingMillis = 0L;
-                if (binding != null) {
-                    showFinalResult();
-                }
-            }
-        }.start();
-    }
-
-    private String formatTime(long millis) {
-        long totalSeconds = Math.max(0L, millis / 1000L);
-        long minutes = totalSeconds / 60L;
-        long seconds = totalSeconds % 60L;
-        return String.format("%02d:%02d", minutes, seconds);
-    }
 
     private void showLoading(boolean loading) {
         binding.progressBar.setVisibility(loading ? View.VISIBLE : View.GONE);
@@ -292,6 +256,7 @@ public class QizzFragment extends Fragment {
 
         for (Button button : buttons) {
             button.setBackgroundResource(com.example.quizzly.R.drawable.bg_qizz_option_default);
+            button.setBackgroundTintList(null);
             button.setTextColor(Color.parseColor("#263238"));
         }
     }
@@ -333,9 +298,6 @@ public class QizzFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
         binding = null;
     }
 }
