@@ -1,21 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Brand / Primary colors -->
+    <color name="primary_blue">#0039B6</color>
+    <color name="quiz_primary">#0A41C3</color>
+    <color name="quiz_primary_dark">#0D42C9</color>
+
+    <!-- Background colors -->
+    <color name="background_blue">#D6EFFF</color>
+    <color name="quiz_background">#DDF2FF</color>
+    <color name="quiz_bg">#9ADCF2</color>
+    <color name="subject_list_bg">#DEF2FE</color>
+    <color name="subject_card_bg">#9FE5F6</color>
+
+    <!-- Surface / Card colors -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="menu_item_bg">#FFFFFF</color>
+    <color name="profile_card_bg">#FFFFFF</color>
+    <color name="profile_card_border">#9E9E9E</color>
+
+    <!-- Text colors -->
+    <color name="text_primary">#111111</color>
+    <color name="text_secondary">#333333</color>
+    <color name="text_tertiary">#666666</color>
+    <color name="text_hint">#999999</color>
+    <color name="text_muted">#666666</color>
+    <color name="text_dark">#1F1F1F</color>
+    <color name="text_label">#555555</color>
+    <color name="text_title">#222222</color>
+    <color name="text_language_title">#9E9E9E</color>
+    <color name="text_quiz_option">#263238</color>
+
+    <!-- Icon & Tint colors -->
+    <color name="icon_tint">#444444</color>
+    <color name="icon_tint_light">#888888</color>
+    <color name="back_arrow_tint">#333333</color>
+    <color name="logout_text">#8B0000</color>
+
+    <!-- Divider colors -->
+    <color name="divider_color">#CCCCCC</color>
+    <color name="divider_language">#444444</color>
+
+    <!-- Button / Accent colors -->
+    <color name="button_blue_dark">#0039B6</color>
+    <color name="quiz_nav_bg">#0B3CB7</color>
+    <color name="circle_button_bg">#0876A7</color>
+    <color name="result_button_bg">#087EB1</color>
+    <color name="dark_card_bg">#073F5C</color>
+    <color name="fab_bg">#3B2A8C</color>
+    <color name="logout_button_bg">#FFCDD2</color>
+
+    <!-- Quiz option colors -->
+    <color name="quiz_option_default_bg">#EAF7FC</color>
+    <color name="quiz_option_selected_bg">#0D42C9</color>
+    <color name="quiz_option_correct_bg">#06C64F</color>
+    <color name="quiz_option_wrong_bg">#C70000</color>
+
+    <!-- Quiz check colors -->
+    <color name="correct_green">#DCB8F894</color>
+    <color name="wrong_red">#F0A7A7</color>
+    <color name="check_green">#00D45A</color>
+    <color name="wrong_red_text">#FF0000</color>
+
+    <!-- Input fields -->
+    <color name="hint_gray">#9E9E9E</color>
+    <color name="edittext_border">#9E9E9E</color>
+    <color name="edittext_bg">#FFFFFF</color>
+
+    <!-- Misc -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="background_blue">#D6EFFF</color>
-    <color name="primary_blue">#0039B6</color>
-    <color name="hint_gray">#9E9E9E</color>
-    <color name="quiz_primary">#0A41C3</color>
-    <color name="quiz_background">#DDF2FF</color>
-    <color name="text_dark">#1F1F1F</color>
-    <color name="text_muted">#666666</color>
-    <color name="correct_green">#DCB8F894</color>
-    <color name="wrong_red">#F0A7A7</color>
-
 </resources>
-
