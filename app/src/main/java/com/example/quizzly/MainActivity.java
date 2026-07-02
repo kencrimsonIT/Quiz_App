@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.quizzly.databinding.ActivityMainBinding;
 import com.example.quizzly.utils.LocaleHelper;
+import com.example.quizzly.utils.ThemeManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Apply saved theme before any UI is created
+        ThemeManager.applySavedTheme(this);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         
